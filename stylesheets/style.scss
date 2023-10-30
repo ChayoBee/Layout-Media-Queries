@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$movil: '(max-width: 576px)';
+$tablet: '(min-width: 577px) and (max-width: 991px)';
+$pc: '(min-width: 992px)';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+@mixin bg ($bg, $g){
+    background-color: $bg;
+    grid-area: $g;
+}
+
+@mixin font ($f) {
+    font-family: 'Roboto', sans-serif;
+    font-size: $f;
+}
+
+@mixin flex ($d, $j, $a){
+    display: $d;
+    justify-content: $j;
+    align-items: $a;
+}
+
+@mixin img ($img) {
+    width: 100%;
+    background-image: $img;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.container {
+    @media #{$movil} {
+    display: grid;
+    grid-template-areas: 
+    'nav'
+    'looking'
+    'body'
+    'footer'
+    ;
+    grid-template-rows: 100px 100px 1fr 100px;
+    }
+    header {
+        @include bg(#9889a6, nav);
+        nav {
+        @include flex(flex, space-between, none);
+        width: 100%;
+        padding-bottom: 20px;
+        .logo {
+            display: flex;
+            height: 80px;
+            padding-top: 20px;
+            padding-left: 10px;
+        }
+        .icon {
+            @include flex(flex, none, center);
+            padding-right: 70px;
+            padding-top: 15px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .menu {
+            display: none;
+        }
+        }
+    }
+
+    aside {
+        @include bg(#e1e8ee, looking);
+        @include flex(flex, center, center);
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        .filtro {
+            @include font(18px);
+        }
+        .select {
+            button {
+                @include flex(flex, space-between, center);
+                height: 30px;
+                width: 250px;
+                padding-left: 20px;
+                padding-right: 10px;
+            }
+        }
+    }
+
+    main {
+        @include bg(#f5faff, body);
+        @include flex(flex, space-around, center);
+        padding: 15px;
+        gap: 13px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        .cards {
+            width: 300px;
+            height: 350px;
+            overflow: hidden;
+            background-color: white;
+            border: 1px solid lightgray;
+            .image {
+                .img1 {
+                    @include img(url(../assets/img/Seikyu.jpg));
+                    height: 170px;
+                }
+                .img2 {
+                    @include img(url(../assets/img/Symphonia.jpg));
+                    height: 170px;
+                }
+                .img3 {
+                    @include img(url(../assets/img/Arise.jpg));
+                    height: 170px;
+                }
+                .img4 {
+                    @include img(url(../assets/img/Crestoria.jpg));
+                    height: 170px;
+                }
+                .img5 {
+                    @include img(url(../assets/img/Vesperia.jpg));
+                    height: 170px;
+                }
+                .img6 {
+                    @include img(url(../assets/img/Berseria.jpg));
+                    height: 170px;
+                }
+                .img7 {
+                    @include img(url(../assets/img/Zestiria.jpg));
+                    height: 170px;
+                }
+                .img8 {
+                    @include img(url(../assets/img/Xillia.jpg));
+                    height: 170px;
+                }
+                .img12 {
+                    @include img(url(../assets/img/Xillia2.jpg));
+                    height: 170px;
+                }
+                .img9 {
+                    @include img(url(../assets/img/Graces.jpg));
+                    height: 170px;
+                }
+                .img10 {
+                    @include img(url(../assets/img/Abyss.jpg));
+                    height: 170px;
+                }
+                .img11 {
+                    @include img(url(../assets/img/Phantasia.jpg));
+                    height: 170px;
+                }
+            }
+            .Ctitle {
+                @include font(14px);
+                text-align: center;
+                padding-top: 10px;
+            }
+            .Cinfo {
+                @include font(18px);
+                text-align: center;
+                padding-top: 15px;
+            }
+            .Cfooter {
+                @include flex(flex, center, center);
+                margin-top: 10px;
+                padding-top: 15px;
+                .boton {
+                    @include font(20px);
+                    height: 50px;
+                    width: 200px;
+                    cursor: pointer;
+                    color: black;
+                    border: 2px solid black;
+                    border-radius: 4px;
+                }
+            }
+        }
+        .Csfooter {
+            @include flex(flex, center, center);
+        button {
+            @include font(15px);
+            height: 30px;
+            width: 30px;
+            cursor: pointer;
+            }
+        }
+    }
+
+    footer {
+        @include bg(#6c4d6f, footer);
+        @include flex(flex, center, center);
+        flex-direction: column;
+        padding: 20px;
+        .redes {
+            font-size: 25px;
+            @include flex(flex, space-around, center);
+            gap: 10px
+        }
+        .copyright {
+            @include font(15px);
+            padding: 12px;
+        }
+    }
+@media #{$pc} {
+    grid-template-areas: 
+    'nav looking looking looking'
+    'nav body body body'
+    'nav body body body'
+    'footer body body body'
+    ;
+    grid-template-columns: 1fr 10fr;
+    
+    header {
+        nav {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            gap: 30px;
+            .logo {
+                flex-direction: column;
+                width: 230px;
+            }
+            .menu {
+                @include flex(flex, space-around, center);
+                @include font(20px);
+                flex-direction: column;
+                gap: 15px;
+                list-style: none;
+                padding-right: 15px;
+                padding-top: 5px;
+                cursor: pointer;
+            }
+            .icon {
+                display: none;
+            }
+        }
+    }
+    
+    main {
+        flex-direction: row;
+        gap: 50px;
+        .cards {
+            width: 250px;
+            height: 350px;
+        }
+    }
+
+    footer {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+@media #{$tablet} {
+    grid-template-areas: 
+    'nav nav nav'
+    'looking body body'
+    'looking body body'
+    'footer footer footer'
+    ;
+    grid-template-columns: 1fr 10fr;
+    grid-template-rows: 100px 1fr 100px;
+
+    nav {
+        .menu {
+            @include flex(flex, space-around, center);
+            @include font(20px);
+            gap: 15px;
+            list-style: none;
+            padding-right: 15px;
+            padding-top: 5px;
+            cursor: pointer;
+        }
+        .icon {
+            display: none;
+        }
+    } 
+     main {
+         flex-direction: row;
+         gap: 15px;
+         .cards {
+              width: 150px;
+              height: 350px;
+         }
+     }
+    
+    footer {
+        padding-top: 50px;
+         padding-bottom: 50px;
+    }
+}
